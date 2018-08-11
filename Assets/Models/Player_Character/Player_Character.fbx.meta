@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: da174836457685b4881beea2aaf50d69
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arm_Lower.l
+    100002: arm_lower.l
+    100004: arm_lower.l_end
+    100006: Arm_Lower.r
+    100008: arm_lower.r
+    100010: arm_lower.r_end
+    100012: Arm_Upper.l
+    100014: arm_upper.l
+    100016: Arm_Upper.r
+    100018: arm_upper.r
+    100020: Armature
+    100022: armature_control
+    100024: armature_control_end
+    100026: Elbow.l
+    100028: Elbow.r
+    100030: groin
+    100032: Head
+    100034: head
+    100036: Head.001
+    100038: head_end
+    100040: Knee.l
+    100042: Knee.r
+    100044: Leg_Lower.l
+    100046: leg_lower.l
+    100048: leg_lower.l_end
+    100050: Leg_Lower.r
+    100052: leg_lower.r
+    100054: leg_lower.r_end
+    100056: Leg_Upper.l
+    100058: leg_upper.l
+    100060: Leg_Upper.r
+    100062: leg_upper.r
+    100064: //RootNode
+    100066: Sphere.002
+    100068: torso
+    100070: Circle
+    400000: Arm_Lower.l
+    400002: arm_lower.l
+    400004: arm_lower.l_end
+    400006: Arm_Lower.r
+    400008: arm_lower.r
+    400010: arm_lower.r_end
+    400012: Arm_Upper.l
+    400014: arm_upper.l
+    400016: Arm_Upper.r
+    400018: arm_upper.r
+    400020: Armature
+    400022: armature_control
+    400024: armature_control_end
+    400026: Elbow.l
+    400028: Elbow.r
+    400030: groin
+    400032: Head
+    400034: head
+    400036: Head.001
+    400038: head_end
+    400040: Knee.l
+    400042: Knee.r
+    400044: Leg_Lower.l
+    400046: leg_lower.l
+    400048: leg_lower.l_end
+    400050: Leg_Lower.r
+    400052: leg_lower.r
+    400054: leg_lower.r_end
+    400056: Leg_Upper.l
+    400058: leg_upper.l
+    400060: Leg_Upper.r
+    400062: leg_upper.r
+    400064: //RootNode
+    400066: Sphere.002
+    400068: torso
+    400070: Circle
+    2100000: Blonde_Hair
+    2100002: Shirt
+    2100004: Pants
+    2100006: Skin
+    2100008: No Name
+    2300000: Circle
+    3300000: Circle
+    4300000: Head.001
+    4300002: Sphere.002
+    4300004: Elbow.l
+    4300006: Arm_Upper.l
+    4300008: Arm_Lower.l
+    4300010: Arm_Upper.r
+    4300012: Arm_Lower.r
+    4300014: Elbow.r
+    4300016: Leg_Lower.l
+    4300018: Leg_Upper.l
+    4300020: Knee.l
+    4300022: Knee.r
+    4300024: Leg_Lower.r
+    4300026: Leg_Upper.r
+    4300028: Head
+    4300030: Circle
+    9500000: //RootNode
+    13700000: Arm_Lower.l
+    13700002: Arm_Lower.r
+    13700004: Arm_Upper.l
+    13700006: Arm_Upper.r
+    13700008: Elbow.l
+    13700010: Elbow.r
+    13700012: Head
+    13700014: Head.001
+    13700016: Knee.l
+    13700018: Knee.r
+    13700020: Leg_Lower.l
+    13700022: Leg_Lower.r
+    13700024: Leg_Upper.l
+    13700026: Leg_Upper.r
+    13700028: Sphere.002
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blonde_Hair
+    second: {fileID: 2100000, guid: ebcdb195af6bc3d4593f8b7354f05113, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: 31816167a5e50e9459086125738c7cc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2100000, guid: 79ac5151a976c4941a752301bda78b22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: c3dd189fe6382624c8f4d321cf3333a5, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: -0.00000019470718, y: -0, z: -1, w: -2.842171e-14}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
