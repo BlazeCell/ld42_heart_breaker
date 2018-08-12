@@ -66,7 +66,7 @@ public class CharPlayer : MonoBehaviour
 
 		if (!_attacking)
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (Input.GetMouseButton(0))
 			{
 				_animator.SetTrigger("attack_fore");
 
@@ -97,18 +97,59 @@ public class CharPlayer : MonoBehaviour
 		transform.position = pos;
 	}
 
-	public void PunchContact(Collider collider)
+	public void PunchContact(List<Collider> lst_colliders)
 	{
 		if (   _attacking
 			&& !_springing_back)
 		{
-			if (   collider.gameObject.tag != "Player"
-				&& collider.gameObject.tag != "Finish")
+			foreach (Collider collider in lst_colliders)
 			{
-				_springing_back = true;
-				_animator.SetBool("spring_back", true);
+				if (collider.gameObject.tag == "Girl")
+				{
+					CharGirl girl = collider.GetComponent<CharGirl>();
+
+					if (girl != null)
+					{
+						if (girl.active)
+						{
+							girl.Hit();
+
+							_springing_back = true;
+							_animator.SetBool("spring_back", true);
+						}
+					}
+				}
+				else
+				if (collider.gameObject.tag == "Wall")
+				{
+					_springing_back = true;
+					_animator.SetBool("spring_back", true);
+				}
 			}
 		}
 		// Debug.Log("Punched '"+collider.name+"'");
+	}
+
+	void OnTriggerEnter(Collider collider)
+	{
+		if (!_attacking)
+		{
+			if (collider.gameObject.tag == "Girl")
+			{
+				CharGirl girl = collider.GetComponent<CharGirl>();
+
+				if (girl != null)
+				{
+					if (girl.active)
+					{
+						ui_fade.header_text = "YOU'VE BEEN GLOMPED!";
+						ui_fade.show_btn_next = false;
+						ui_fade.show_btn_retry = true;
+						ui_fade.show_btn_main_menu = true;
+						ui_fade.Load();
+					}
+				}
+			}
+		}
 	}
 };

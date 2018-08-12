@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\CharPlayer.cs" />
      <Compile Include="Assets\Scripts\DetectTrigger.cs" />
      <Compile Include="Assets\Scripts\Exit.cs" />
+     <Compile Include="Assets\Scripts\LookAtCamera.cs" />
      <Compile Include="Assets\Scripts\UI\ui_fade.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Work/personal/LD42 Heard Breaker/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

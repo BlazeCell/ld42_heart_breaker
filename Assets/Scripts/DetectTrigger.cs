@@ -7,17 +7,28 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class UnityEvent_Collider : UnityEvent<Collider>
+public class UnityEvent_Collider : UnityEvent<List<Collider>>
 {
 
 };
 
 public class DetectTrigger : MonoBehaviour
 {
+	private List<Collider> _lst_colliders = new List<Collider>();
+
 	public UnityEvent_Collider onTrigger;
 	
 	void OnTriggerEnter(Collider collider)
 	{
-		onTrigger.Invoke(collider);
+		_lst_colliders.Add(collider);
+	}
+
+	void LateUpdate()
+	{
+		if (_lst_colliders.Count > 0)
+		{
+			onTrigger.Invoke(_lst_colliders);
+			_lst_colliders.Clear();
+		}
 	}
 };

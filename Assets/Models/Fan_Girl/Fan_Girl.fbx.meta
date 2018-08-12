@@ -39,6 +39,8 @@ ModelImporter:
     100066: torso
     100068: weapon_slot
     100070: weapon_slot_end
+    100072: skirt
+    100074: skirt_end
     400000: Arm_Lower.l
     400002: arm_lower.l
     400004: arm_lower.l_end
@@ -75,6 +77,8 @@ ModelImporter:
     400066: torso
     400068: weapon_slot
     400070: weapon_slot_end
+    400072: skirt
+    400074: skirt_end
     2100000: Blonde_Hair
     2100002: Skirt
     2100004: Shirt
