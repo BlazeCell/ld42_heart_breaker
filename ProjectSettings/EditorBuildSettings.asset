@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ui_fade.unity
     guid: a317b54387870ab498d75bf367b734f2
+  - enabled: 1
+    path: Assets/Scenes/manager_music.unity
+    guid: f88d5d5bdd951fb4788f2e51523316e8
   m_configObjects: {}

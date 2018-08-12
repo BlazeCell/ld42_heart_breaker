@@ -34,6 +34,8 @@ public class BattleManager : MonoBehaviour
 	public List<Spawn> lst_hall_spawns = new List<Spawn>();
 
 	public CharGirl prefab_girl_basic;
+	public CharGirl prefab_girl_thicc;
+	public CharGirl prefab_girl_amazon;
 
 	public HordeInflux initial_influx;
 	public List<HordeInflux> lst_surprise_influxes = new List<HordeInflux>();
@@ -62,12 +64,47 @@ public class BattleManager : MonoBehaviour
 		initial_influx = new HordeInflux();
 
 		initial_influx.basic.spawn_count = 4 + 4 * level;
+		initial_influx.basic.cluster_size = 2 * level;
+
+		initial_influx.thicc.spawn_count = Mathf.Max(0, 1 + level-2);
+		initial_influx.thicc.cluster_size = (int)Mathf.Ceil(Mathf.Max(0, 1 + level-2) / 2.0f);
+
+		initial_influx.amazon.spawn_count = 1 * Mathf.Max(0, 1 + level-4);
+		initial_influx.amazon.cluster_size = (int)Mathf.Ceil(Mathf.Max(0, 1 + level-4) / 2.0f);
+
+		// initial_influx.thicc.spawn_count = Mathf.Max(0, level-3);
+		// initial_influx.thicc.cluster_size = 1;
+		// if (level < 3)
+		// 	initial_influx.thicc.delay = 3;
+		// else
+		// if (level < 6)
+		// 	initial_influx.thicc.delay = 2;
+		// else
+		// if (level < 9)
+		// 	initial_influx.thicc.delay = 1;
+		// else
+		// 	initial_influx.thicc.delay = 0;
+
+		// initial_influx.amazon.spawn_count = Mathf.Max(0, level-5);
+		// initial_influx.amazon.cluster_size = 1;
+		// if (level < 5)
+		// 	initial_influx.amazon.delay = 3;
+		// else
+		// if (level < 10)
+		// 	initial_influx.amazon.delay = 2;
+		// else
+		// if (level < 15)
+		// 	initial_influx.amazon.delay = 1;
+		// else
+		// 	initial_influx.amazon.delay = 0;
 
 	}
 
 	private void SpawnLogic()
 	{
 		SpawnPrefabLogic(prefab_girl_basic, initial_influx.basic, lst_hall_spawns);
+		SpawnPrefabLogic(prefab_girl_thicc, initial_influx.thicc, lst_hall_spawns);
+		SpawnPrefabLogic(prefab_girl_amazon, initial_influx.amazon, lst_hall_spawns);
 	}
 
 	private void SpawnPrefabLogic(CharGirl prefab, SpawnSettings settings, List<Spawn> lst_spawns)
@@ -98,7 +135,7 @@ public class BattleManager : MonoBehaviour
 						UnityEngine.Random.Range(spawn.bounds.min.z, spawn.bounds.max.z)
 					);
 
-					CharGirl girl = Instantiate(prefab_girl_basic);
+					CharGirl girl = Instantiate(prefab);
 					girl.transform.SetParent(transform);
 					girl.transform.position = spawn_pos;
 					girl.transform.rotation = Quaternion.LookRotation(-spawn_pos, Vector3.up);

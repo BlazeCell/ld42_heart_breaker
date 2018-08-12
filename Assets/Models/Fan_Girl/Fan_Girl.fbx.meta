@@ -18,29 +18,32 @@ ModelImporter:
     100024: Elbow.l
     100026: Elbow.r
     100028: //RootNode
-    100030: Girl_Hair
-    100032: groin
-    100034: Head
-    100036: head
-    100038: head_end
-    100040: Knee.l
-    100042: Knee.r
-    100044: Leg_Lower.l
-    100046: leg_lower.l
-    100048: leg_lower.l_end
-    100050: Leg_Lower.r
-    100052: leg_lower.r
-    100054: leg_lower.r_end
-    100056: Leg_Upper.l
-    100058: leg_upper.l
-    100060: Leg_Upper.r
-    100062: leg_upper.r
-    100064: Skirt
-    100066: torso
-    100068: weapon_slot
-    100070: weapon_slot_end
-    100072: skirt
-    100074: skirt_end
+    100030: groin
+    100032: Head
+    100034: head
+    100036: head_end
+    100038: Knee.l
+    100040: Knee.r
+    100042: Leg_Lower.l
+    100044: leg_lower.l
+    100046: leg_lower.l_end
+    100048: Leg_Lower.r
+    100050: leg_lower.r
+    100052: leg_lower.r_end
+    100054: Leg_Upper.l
+    100056: leg_upper.l
+    100058: Leg_Upper.r
+    100060: leg_upper.r
+    100062: Long_Hair
+    100064: Pony_Tail
+    100066: Short_Hair
+    100068: Skirt
+    100070: skirt
+    100072: skirt_end
+    100074: torso
+    100076: Twin_Tail
+    100078: weapon_slot
+    100080: weapon_slot_end
     400000: Arm_Lower.l
     400002: arm_lower.l
     400004: arm_lower.l_end
@@ -56,50 +59,56 @@ ModelImporter:
     400024: Elbow.l
     400026: Elbow.r
     400028: //RootNode
-    400030: Girl_Hair
-    400032: groin
-    400034: Head
-    400036: head
-    400038: head_end
-    400040: Knee.l
-    400042: Knee.r
-    400044: Leg_Lower.l
-    400046: leg_lower.l
-    400048: leg_lower.l_end
-    400050: Leg_Lower.r
-    400052: leg_lower.r
-    400054: leg_lower.r_end
-    400056: Leg_Upper.l
-    400058: leg_upper.l
-    400060: Leg_Upper.r
-    400062: leg_upper.r
-    400064: Skirt
-    400066: torso
-    400068: weapon_slot
-    400070: weapon_slot_end
-    400072: skirt
-    400074: skirt_end
+    400030: groin
+    400032: Head
+    400034: head
+    400036: head_end
+    400038: Knee.l
+    400040: Knee.r
+    400042: Leg_Lower.l
+    400044: leg_lower.l
+    400046: leg_lower.l_end
+    400048: Leg_Lower.r
+    400050: leg_lower.r
+    400052: leg_lower.r_end
+    400054: Leg_Upper.l
+    400056: leg_upper.l
+    400058: Leg_Upper.r
+    400060: leg_upper.r
+    400062: Long_Hair
+    400064: Pony_Tail
+    400066: Short_Hair
+    400068: Skirt
+    400070: skirt
+    400072: skirt_end
+    400074: torso
+    400076: Twin_Tail
+    400078: weapon_slot
+    400080: weapon_slot_end
     2100000: Blonde_Hair
     2100002: Skirt
     2100004: Shirt
     2100006: Pants
     2100008: Skin
-    4300000: Girl_Hair
-    4300002: Skirt
-    4300004: Body
-    4300006: Elbow.l
-    4300008: Arm_Upper.l
-    4300010: Arm_Lower.l
-    4300012: Arm_Upper.r
-    4300014: Arm_Lower.r
-    4300016: Elbow.r
-    4300018: Leg_Lower.l
-    4300020: Leg_Upper.l
-    4300022: Knee.l
-    4300024: Knee.r
-    4300026: Leg_Lower.r
-    4300028: Leg_Upper.r
-    4300030: Head
+    4300000: Long_Hair
+    4300002: Twin_Tail
+    4300004: Pony_Tail
+    4300006: Short_Hair
+    4300008: Skirt
+    4300010: Body
+    4300012: Elbow.l
+    4300014: Arm_Upper.l
+    4300016: Arm_Lower.l
+    4300018: Arm_Upper.r
+    4300020: Arm_Lower.r
+    4300022: Elbow.r
+    4300024: Leg_Lower.l
+    4300026: Leg_Upper.l
+    4300028: Knee.l
+    4300030: Knee.r
+    4300032: Leg_Lower.r
+    4300034: Leg_Upper.r
+    4300036: Head
     9500000: //RootNode
     13700000: Arm_Lower.l
     13700002: Arm_Lower.r
@@ -108,15 +117,18 @@ ModelImporter:
     13700008: Body
     13700010: Elbow.l
     13700012: Elbow.r
-    13700014: Girl_Hair
-    13700016: Head
-    13700018: Knee.l
-    13700020: Knee.r
-    13700022: Leg_Lower.l
-    13700024: Leg_Lower.r
-    13700026: Leg_Upper.l
-    13700028: Leg_Upper.r
-    13700030: Skirt
+    13700014: Head
+    13700016: Knee.l
+    13700018: Knee.r
+    13700020: Leg_Lower.l
+    13700022: Leg_Lower.r
+    13700024: Leg_Upper.l
+    13700026: Leg_Upper.r
+    13700028: Long_Hair
+    13700030: Pony_Tail
+    13700032: Short_Hair
+    13700034: Skirt
+    13700036: Twin_Tail
   externalObjects:
   - first:
       type: UnityEngine:Material

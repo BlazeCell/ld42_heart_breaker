@@ -44,14 +44,14 @@ public class ui_fade : MonoBehaviour
 
 	public void btn_next_Click()
 	{
-		// TODO: Increment game difficulty.
+		BattleManager.level += 1;
 
 		SceneManager.LoadScene("corridor", LoadSceneMode.Single);
 	}
 
 	public void btn_retry_Click()
 	{
-		// TODO: Reset game difficulty.
+		BattleManager.level = 1;
 
 		SceneManager.LoadScene("corridor", LoadSceneMode.Single);
 	}
