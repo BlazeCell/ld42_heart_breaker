@@ -142,7 +142,16 @@ public class CharPlayer : MonoBehaviour
 				{
 					if (girl.active)
 					{
-						ui_fade.header_text = "YOU'VE BEEN GLOMPED!";
+						switch (UnityEngine.Random.Range(0, 3))
+						{
+							case 0: ui_fade.header_text = "YOU'VE BEEN GLOMPED!";
+								break;
+							case 1: ui_fade.header_text = "EWW! KOOTIES!";
+								break;
+							case 2: ui_fade.header_text = "NO-SCOPED BY CUPID!";
+								break;
+						}
+						
 						ui_fade.show_btn_next = false;
 						ui_fade.show_btn_retry = true;
 						ui_fade.show_btn_main_menu = true;

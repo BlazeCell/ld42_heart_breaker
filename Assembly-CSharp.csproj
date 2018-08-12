@@ -57,8 +57,11 @@
      <Compile Include="Assets\Scripts\CharGirl.cs" />
      <Compile Include="Assets\Scripts\CharPlayer.cs" />
      <Compile Include="Assets\Scripts\DetectTrigger.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\Exit.cs" />
      <Compile Include="Assets\Scripts\LookAtCamera.cs" />
+     <Compile Include="Assets\Scripts\ManagerMusic.cs" />
+     <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\UI\ui_fade.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Work/personal/LD42 Heart Breaker/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

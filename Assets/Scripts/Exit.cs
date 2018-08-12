@@ -9,7 +9,7 @@ public class Exit : MonoBehaviour
 {
 	void OnTriggerEnter(Collider collider)
 	{
-		Debug.Log("Exit Triggered: " + collider.name);
+		// Debug.Log("Exit Triggered: " + collider.name);
 
 		if(collider.gameObject.tag == "Player")
 		{
