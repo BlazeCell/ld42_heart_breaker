@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 public class CharPlayer : MonoBehaviour
 {
+	public static CharPlayer instance;
+
 	public Camera camera;
 	public float turn_speed = 270.0f;
 
@@ -22,7 +24,15 @@ public class CharPlayer : MonoBehaviour
 
 	void Start()
 	{
+		instance = this;
+
 		_animator = GetComponent<Animator>();
+	}
+
+	void OnDestroy()
+	{
+		if (instance == this)
+			instance = null;
 	}
 	
 	void Update()

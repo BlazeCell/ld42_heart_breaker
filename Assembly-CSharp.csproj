@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CharGirl.cs" />
      <Compile Include="Assets\Scripts\CharPlayer.cs" />
      <Compile Include="Assets\Scripts\DetectTrigger.cs" />
      <Compile Include="Assets\Scripts\Exit.cs" />
