@@ -13,7 +13,9 @@ public class Exit : MonoBehaviour
 
 		if(collider.gameObject.tag == "Player")
 		{
-			ui_fade.header_text = "LEVEL COMPLETE!";
+			BattleManager.score += 100;
+
+			ui_fade.header_text = "LEVEL\nCOMPLETE!";
 			ui_fade.show_btn_resume = false;
 			ui_fade.show_btn_next = true;
 			ui_fade.show_btn_retry = false;

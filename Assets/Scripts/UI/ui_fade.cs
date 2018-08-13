@@ -15,6 +15,7 @@ public class ui_fade : MonoBehaviour
 	public static bool show_btn_main_menu = true;
 
 	public Text txt_header;
+	public Text txt_score;
 	public Button btn_resume;
 	public Button btn_next;
 	public Button btn_retry;
@@ -29,6 +30,13 @@ public class ui_fade : MonoBehaviour
 		btn_next.gameObject.SetActive(show_btn_next);
 		btn_retry.gameObject.SetActive(show_btn_retry);
 		btn_main_menu.gameObject.SetActive(show_btn_main_menu);
+
+		txt_score.text = BattleManager.score.ToString();
+	}
+
+	void Update()
+	{
+		txt_score.text = BattleManager.score.ToString();
 	}
 
 	void OnDestroy()
@@ -65,7 +73,7 @@ public class ui_fade : MonoBehaviour
 	{
 		Time.timeScale = 1.0f;
 
-		BattleManager.level = 1;
+		BattleManager.ResetGame();
 
 		SceneManager.LoadScene("corridor", LoadSceneMode.Single);
 	}
@@ -73,7 +81,7 @@ public class ui_fade : MonoBehaviour
 	public void btn_main_menu_Click()
 	{
 		Time.timeScale = 1.0f;
-		
+
 		DontDestroy.DestroyAll();
 
 		SceneManager.LoadScene("title", LoadSceneMode.Single);

@@ -146,11 +146,11 @@ public class CharPlayer : MonoBehaviour
 					{
 						switch (UnityEngine.Random.Range(0, 3))
 						{
-							case 0: ui_fade.header_text = "YOU'VE BEEN GLOMPED!";
+							case 0: ui_fade.header_text = "YOU'VE BEEN\nGLOMPED!";
 								break;
-							case 1: ui_fade.header_text = "EWW! KOOTIES!";
+							case 1: ui_fade.header_text = "EWW!\nKOOTIES!";
 								break;
-							case 2: ui_fade.header_text = "NO-SCOPED BY CUPID!";
+							case 2: ui_fade.header_text = "NO-SCOPED\nBY CUPID!";
 								break;
 						}
 						

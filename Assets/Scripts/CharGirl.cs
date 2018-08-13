@@ -12,6 +12,7 @@ public class CharGirl : MonoBehaviour
 
 	public bool active = true;
 	public bool mobile = true;
+	public int value = 1;
 	[Range(0, 5)]
 	public int health = 1;
 	public float turn_speed = 180.0f;
@@ -108,7 +109,10 @@ public class CharGirl : MonoBehaviour
 			_animator.SetInteger("health", health);
 			_animator.SetTrigger("hit");
 
-			_nav_agent.ResetPath();
+			if (health <= 0)
+				BattleManager.score += value;
+
+			// _nav_agent.ResetPath();
 		}
 	}
 

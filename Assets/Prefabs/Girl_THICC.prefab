@@ -1415,7 +1415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator_heart: {fileID: 95525738160741394}
   active: 1
+  mobile: 1
+  value: 5
   health: 3
+  turn_speed: 180
 --- !u!136 &136011187384440834
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -14,7 +14,7 @@ public class ui_title : MonoBehaviour
 
 	public void btn_play_Click()
 	{
-		BattleManager.level = 1;
+		BattleManager.ResetGame();
 
 		SceneManager.LoadScene("corridor", LoadSceneMode.Single);
 	}

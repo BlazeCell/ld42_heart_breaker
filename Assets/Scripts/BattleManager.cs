@@ -30,6 +30,9 @@ public class HordeInflux
 public class BattleManager : MonoBehaviour
 {
 	public static int level = 1;
+	public static int score = 0;
+
+	public Text txt_score;
 
 	public List<Spawn> lst_hall_spawns = new List<Spawn>();
 
@@ -39,6 +42,12 @@ public class BattleManager : MonoBehaviour
 
 	public HordeInflux initial_influx;
 	public List<HordeInflux> lst_surprise_influxes = new List<HordeInflux>();
+
+	public static void ResetGame()
+	{
+		level = 1;
+		score = 0;
+	}
 
 	void Start()
 	{
@@ -51,11 +60,13 @@ public class BattleManager : MonoBehaviour
 	{
 		SpawnLogic();
 
+		txt_score.text = score.ToString();
+
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
 			Time.timeScale = 0.0f;
 
-			ui_fade.header_text = "GAME PAUSED";
+			ui_fade.header_text = "GAME\nPAUSED";
 			ui_fade.show_btn_resume = true;
 			ui_fade.show_btn_next = false;
 			ui_fade.show_btn_retry = false;
