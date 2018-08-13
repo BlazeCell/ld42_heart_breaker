@@ -21,6 +21,11 @@ public class ui_fade : MonoBehaviour
 	public Button btn_retry;
 	public Button btn_main_menu;
 
+	public static bool IsHidden()
+	{
+		return _instance == null;
+	}
+
 	void Start()
 	{
 		_instance = this;

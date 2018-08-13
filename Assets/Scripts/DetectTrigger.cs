@@ -14,21 +14,29 @@ public class UnityEvent_Collider : UnityEvent<List<Collider>>
 
 public class DetectTrigger : MonoBehaviour
 {
-	private List<Collider> _lst_colliders = new List<Collider>();
-
 	public UnityEvent_Collider onTrigger;
+	
+	public List<Collider> lst_colliders = new List<Collider>();
+	
+	private bool _event_invoked = false;
 	
 	void OnTriggerEnter(Collider collider)
 	{
-		_lst_colliders.Add(collider);
+		if (_event_invoked)
+		{
+			_event_invoked = false;
+			lst_colliders.Clear();
+		}
+
+		lst_colliders.Add(collider);
 	}
 
 	void LateUpdate()
 	{
-		if (_lst_colliders.Count > 0)
+		if (lst_colliders.Count > 0)
 		{
-			onTrigger.Invoke(_lst_colliders);
-			_lst_colliders.Clear();
+			onTrigger.Invoke(lst_colliders);
+			_event_invoked = true;
 		}
 	}
 };

@@ -10,6 +10,7 @@ public class CharPlayer : MonoBehaviour
 	public static CharPlayer instance;
 
 	public Camera camera;
+	public SphereCollider burst_collider;
 	public bool accept_input = true;
 	public float turn_speed = 270.0f;
 
@@ -22,12 +23,15 @@ public class CharPlayer : MonoBehaviour
 
 	private bool _attacking = false;
 	private bool _springing_back = false;
+	private bool _just_finished_attacking = false;
 
 	void Start()
 	{
 		instance = this;
 
 		_animator = GetComponent<Animator>();
+
+		StartCoroutine(UpdateAsync());
 	}
 
 	void OnDestroy()
@@ -36,8 +40,16 @@ public class CharPlayer : MonoBehaviour
 			instance = null;
 	}
 	
-	void Update()
+	private IEnumerator UpdateAsync()
 	{
+		yield return new WaitForSeconds(0.0f);
+
+		if (_just_finished_attacking)
+		{
+			_just_finished_attacking = false;
+			yield return new WaitForSeconds(0.05f);
+		}
+
 		if (accept_input)
 		{
 			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +74,8 @@ public class CharPlayer : MonoBehaviour
 
 				// Debug.Log("lookat_angle: "+lookat_angle);
 
-				transform.rotation = Quaternion.RotateTowards(transform.rotation, rot_target, Time.deltaTime * turn_speed);
+				// transform.rotation = Quaternion.RotateTowards(transform.rotation, rot_target, Time.deltaTime * turn_speed);
+				transform.rotation = rot_target;
 			}
 
 			if (!_attacking)
@@ -75,10 +88,14 @@ public class CharPlayer : MonoBehaviour
 				}
 			}
 		}
+
+		StartCoroutine(UpdateAsync());
 	}
 
 	public void IdleStart()
 	{
+		if (_attacking)
+			_just_finished_attacking = true;
 		_attacking = false;
 		_springing_back = false;
 		_animator.SetBool("spring_back", false);
@@ -116,8 +133,12 @@ public class CharPlayer : MonoBehaviour
 						{
 							girl.Hit();
 
+							HitAllGirlsWithinBurst();
+
 							_springing_back = true;
 							_animator.SetBool("spring_back", true);
+
+							return;
 						}
 					}
 				}
@@ -132,6 +153,27 @@ public class CharPlayer : MonoBehaviour
 		// Debug.Log("Punched '"+collider.name+"'");
 	}
 
+	private void HitAllGirlsWithinBurst()
+	{
+		float burst_radius = 
+			  burst_collider.radius 
+			* Mathf.Max(burst_collider.transform.lossyScale.x, burst_collider.transform.lossyScale.z);
+
+		CharGirl[] arr_girls = FindObjectsOfType<CharGirl>();
+		foreach (CharGirl girl in arr_girls)
+		{
+			if (girl.mobile)
+			{
+				Collider collider = girl.GetComponent<Collider>();
+				Vector3 closest_instersect = collider.ClosestPoint(burst_collider.transform.position);
+				if (Vector3.Distance(burst_collider.transform.position, closest_instersect) <= burst_radius)
+				{
+					girl.Hit();
+				}
+			}
+		}
+	}
+
 	void OnTriggerEnter(Collider collider)
 	{
 		if (!_attacking)
@@ -144,21 +186,26 @@ public class CharPlayer : MonoBehaviour
 				{
 					if (girl.mobile)
 					{
-						switch (UnityEngine.Random.Range(0, 3))
+						if (ui_fade.IsHidden())
 						{
-							case 0: ui_fade.header_text = "YOU'VE BEEN\nGLOMPED!";
-								break;
-							case 1: ui_fade.header_text = "EWW!\nKOOTIES!";
-								break;
-							case 2: ui_fade.header_text = "NO-SCOPED\nBY CUPID!";
-								break;
+							switch (UnityEngine.Random.Range(0, 3))
+							{
+								case 0: ui_fade.header_text = "YOU'VE BEEN\nGLOMPED!";
+									break;
+								case 1: ui_fade.header_text = "EWW!\nKOOTIES!";
+									break;
+								case 2: ui_fade.header_text = "NO-SCOPED\nBY CUPID!";
+									break;
+							}
+							
+							ui_fade.show_btn_resume = false;
+							ui_fade.show_btn_next = false;
+							ui_fade.show_btn_retry = true;
+							ui_fade.show_btn_main_menu = true;
+							ui_fade.Load();
+
+							ManagerMusic.PlayGameOverMusic();
 						}
-						
-						ui_fade.show_btn_resume = false;
-						ui_fade.show_btn_next = false;
-						ui_fade.show_btn_retry = true;
-						ui_fade.show_btn_main_menu = true;
-						ui_fade.Load();
 					}
 				}
 			}

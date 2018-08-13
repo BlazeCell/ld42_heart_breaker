@@ -47,6 +47,8 @@ public class BattleManager : MonoBehaviour
 	{
 		level = 1;
 		score = 0;
+
+		ManagerMusic.PlayBattleMusic();
 	}
 
 	void Start()
@@ -64,14 +66,17 @@ public class BattleManager : MonoBehaviour
 
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			Time.timeScale = 0.0f;
+			if (ui_fade.IsHidden())
+			{
+				Time.timeScale = 0.0f;
 
-			ui_fade.header_text = "GAME\nPAUSED";
-			ui_fade.show_btn_resume = true;
-			ui_fade.show_btn_next = false;
-			ui_fade.show_btn_retry = false;
-			ui_fade.show_btn_main_menu = true;
-			ui_fade.Load();
+				ui_fade.header_text = "GAME\nPAUSED";
+				ui_fade.show_btn_resume = true;
+				ui_fade.show_btn_next = false;
+				ui_fade.show_btn_retry = false;
+				ui_fade.show_btn_main_menu = true;
+				ui_fade.Load();
+			}
 		}
 	}
 
