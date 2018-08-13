@@ -14,9 +14,10 @@ public class Exit : MonoBehaviour
 		if(collider.gameObject.tag == "Player")
 		{
 			ui_fade.header_text = "LEVEL COMPLETE!";
+			ui_fade.show_btn_resume = false;
 			ui_fade.show_btn_next = true;
 			ui_fade.show_btn_retry = false;
-			ui_fade.show_btn_main_menu = false;
+			ui_fade.show_btn_main_menu = true;
 			ui_fade.Load();
 		}
 	}

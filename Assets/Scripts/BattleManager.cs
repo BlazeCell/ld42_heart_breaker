@@ -53,9 +53,14 @@ public class BattleManager : MonoBehaviour
 
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			Debug.Log("Quitting...");
-			
-			Application.Quit();
+			Time.timeScale = 0.0f;
+
+			ui_fade.header_text = "GAME PAUSED";
+			ui_fade.show_btn_resume = true;
+			ui_fade.show_btn_next = false;
+			ui_fade.show_btn_retry = false;
+			ui_fade.show_btn_main_menu = true;
+			ui_fade.Load();
 		}
 	}
 

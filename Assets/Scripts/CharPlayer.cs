@@ -10,6 +10,7 @@ public class CharPlayer : MonoBehaviour
 	public static CharPlayer instance;
 
 	public Camera camera;
+	public bool accept_input = true;
 	public float turn_speed = 270.0f;
 
 	private Animator _animator;
@@ -37,40 +38,41 @@ public class CharPlayer : MonoBehaviour
 	
 	void Update()
 	{
-
-
-		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
-		float intersect = 0.0f;
-		if (_plane_ground.Raycast(ray, out intersect))
+		if (accept_input)
 		{
-			// Get the point that is clicked
-			_lookat_target = ray.GetPoint(intersect);
-		}
+			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-		if (!_attacking)
-		{
-			Vector3 lookat_dir = _lookat_target - transform.position;
-			lookat_dir.y = 0.0f;
-			lookat_dir.Normalize();
-
-			// Debug.Log("lookat_dir: "+lookat_dir);
-
-			float lookat_angle =  Vector3.SignedAngle(Vector3.forward, lookat_dir, Vector3.up);
-			Quaternion rot_target = Quaternion.AngleAxis(lookat_angle, Vector3.up);
-
-			// Debug.Log("lookat_angle: "+lookat_angle);
-
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, rot_target, Time.deltaTime * turn_speed);
-		}
-
-		if (!_attacking)
-		{
-			if (Input.GetMouseButton(0))
+			float intersect = 0.0f;
+			if (_plane_ground.Raycast(ray, out intersect))
 			{
-				_animator.SetTrigger("attack_fore");
+				// Get the point that is clicked
+				_lookat_target = ray.GetPoint(intersect);
+			}
 
-				_attacking = true;
+			if (!_attacking)
+			{
+				Vector3 lookat_dir = _lookat_target - transform.position;
+				lookat_dir.y = 0.0f;
+				lookat_dir.Normalize();
+
+				// Debug.Log("lookat_dir: "+lookat_dir);
+
+				float lookat_angle =  Vector3.SignedAngle(Vector3.forward, lookat_dir, Vector3.up);
+				Quaternion rot_target = Quaternion.AngleAxis(lookat_angle, Vector3.up);
+
+				// Debug.Log("lookat_angle: "+lookat_angle);
+
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, rot_target, Time.deltaTime * turn_speed);
+			}
+
+			if (!_attacking)
+			{
+				if (Input.GetMouseButton(0))
+				{
+					_animator.SetTrigger("attack_fore");
+
+					_attacking = true;
+				}
 			}
 		}
 	}
@@ -110,7 +112,7 @@ public class CharPlayer : MonoBehaviour
 
 					if (girl != null)
 					{
-						if (girl.active)
+						if (girl.mobile)
 						{
 							girl.Hit();
 
@@ -140,7 +142,7 @@ public class CharPlayer : MonoBehaviour
 
 				if (girl != null)
 				{
-					if (girl.active)
+					if (girl.mobile)
 					{
 						switch (UnityEngine.Random.Range(0, 3))
 						{
@@ -152,6 +154,7 @@ public class CharPlayer : MonoBehaviour
 								break;
 						}
 						
+						ui_fade.show_btn_resume = false;
 						ui_fade.show_btn_next = false;
 						ui_fade.show_btn_retry = true;
 						ui_fade.show_btn_main_menu = true;

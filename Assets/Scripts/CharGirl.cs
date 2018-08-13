@@ -11,8 +11,10 @@ public class CharGirl : MonoBehaviour
 	public Animator animator_heart;
 
 	public bool active = true;
+	public bool mobile = true;
 	[Range(0, 5)]
 	public int health = 1;
+	public float turn_speed = 180.0f;
 
 	private Animator _animator;
 	private NavMeshAgent _nav_agent;
@@ -32,43 +34,53 @@ public class CharGirl : MonoBehaviour
 		_target_heart_size = health;
 		_heart_size = _target_heart_size;
 
+		_animator.SetBool("active", active);
 		_animator.SetInteger("health", health);
 		animator_heart.SetFloat("size", _heart_size);
 
-		StartCoroutine(CalcPath());
+		// StartCoroutine(CalcPath());
 	}
 	
 	void Update()
 	{
-		if (active)
+		if (   active)
 		{
-			_nav_agent.updatePosition = false;
-
-			_nav_agent.nextPosition = transform.position;
-
-			// if (Time.time > _last_calc_time + 1.0f)
+			if (mobile)
 			{
-				// StartCoroutine(CalcPath());
-				_nav_agent.SetDestination(CharPlayer.instance.transform.position);
+				Vector3 dir_player = CharPlayer.instance.transform.position - transform.position;
+				dir_player.Normalize();
 
+				float angle_target = Vector3.SignedAngle(Vector3.forward, dir_player, Vector3.up);
+
+				Quaternion rot_target = Quaternion.AngleAxis(angle_target, Vector3.up);
+
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, rot_target, Time.deltaTime * turn_speed);
+
+				// _nav_agent.updatePosition = false;
+
+				// _nav_agent.nextPosition = transform.position;
+
+				// {
+				// 	_nav_agent.SetDestination(CharPlayer.instance.transform.position);
+				// }
 			}
+
+			// Ensure that we don't clip thru walls.
+			Vector3 pos = transform.position;
+			if (   Mathf.Abs(pos.x) > 10.0f
+				&& Mathf.Abs(pos.z) > 10.0f)
+			{
+				if (Mathf.Abs(pos.x) < Mathf.Abs(pos.z))
+					pos.x = Mathf.Clamp(pos.x, -9.5f, 9.5f);
+				else
+					pos.z = Mathf.Clamp(pos.z, -9.5f, 9.5f);
+
+				transform.position = pos;
+			}
+
+			_heart_size = Mathf.MoveTowards(_heart_size, _target_heart_size, Time.deltaTime * 1.0f);
+			animator_heart.SetFloat("size", _heart_size);
 		}
-
-		// Ensure that we don't clip thru walls.
-		Vector3 pos = transform.position;
-		if (   Mathf.Abs(pos.x) > 10.0f
-			&& Mathf.Abs(pos.z) > 10.0f)
-		{
-			if (Mathf.Abs(pos.x) < Mathf.Abs(pos.z))
-				pos.x = Mathf.Clamp(pos.x, -9.5f, 9.5f);
-			else
-				pos.z = Mathf.Clamp(pos.z, -9.5f, 9.5f);
-
-			transform.position = pos;
-		}
-
-		_heart_size = Mathf.MoveTowards(_heart_size, _target_heart_size, Time.deltaTime * 1.0f);
-		animator_heart.SetFloat("size", _heart_size);
 	}
 
 	private IEnumerator CalcPath()
@@ -83,9 +95,10 @@ public class CharGirl : MonoBehaviour
 
 	public void Hit()
 	{
-		if (active)
+		if (   active
+			&& mobile)
 		{
-			active = false;
+			mobile = false;
 
 			--health;
 			_target_heart_size = health;
@@ -101,28 +114,21 @@ public class CharGirl : MonoBehaviour
 
 	public void IdleStart()
 	{
-		active = true;
+		if (active)
+		{
+			mobile = true;
 
-		Vector3 pos = transform.position;
-		pos.y = 0.0f;
+			Vector3 pos = transform.position;
+			pos.y = 0.0f;
 
-		// // Ensure that we don't clip thru walls.
-		// if (   Mathf.Abs(pos.x) > 10.0f
-		// 	&& Mathf.Abs(pos.z) > 10.0f)
-		// {
-		// 	if (Mathf.Abs(pos.x) < Mathf.Abs(pos.z))
-		// 		pos.x = Mathf.Clamp(pos.x, -9.5f, 9.5f);
-		// 	else
-		// 		pos.z = Mathf.Clamp(pos.z, -9.5f, 9.5f);
-		// }
-
-		transform.position = pos;
+			transform.position = pos;
+		}
 	}
 
 	public void PunchContact(Collider collider)
 	{
 		if (   active
-			&& !_springing_back)
+			&& mobile)
 		{
 			if (   collider.gameObject.tag != "Player"
 				&& collider.gameObject.tag != "Finish")
